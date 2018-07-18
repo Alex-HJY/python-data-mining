@@ -1,0 +1,39 @@
+# -*- coding: utf-8 -*-
+"""
+拉格朗日插值代码
+By HJY
+2018-7-18
+"""
+import pandas as pd
+from scipy.interpolate import lagrange  # 导入数据分析库Pandas、拉格朗日插值函数
+
+
+def ployinterp_column(s, n, k=5):
+    """
+    自定义列向量插值函数
+    :param s: 为列向量
+    :param n: 为被插值的位置
+    :param k: k为取前后的数据个数，默认为5
+    :return: 插值并返回插值结果，数据类型为list
+
+    22行代码原书为
+    y = s[list(range(n-k, n)) + list(range(n+1, n+1+k))]
+    但是会有警告，所以采用.reindex方法，使用.reindex方法会减少错误，警告原文如下
+    Passing list-likes to .loc or [] with any missing label will raise \
+    KeyError in the future, you can use .reindex() as an alternative.
+    """
+    y = s.reindex(list(range(n - k, n)) + list(range(n + 1, n + 1 + k)))  # 取位置N前后K个数，不包括N
+    y = y[y.notnull()]  # 删去空值
+    return lagrange(y.index, y.tolist())  # 插值并返回插值结果，数据类型为list
+
+
+inputfile_path = '../data/missing_data.xls'
+outputfile_path = '../output/missing_data_processed.xls'  # 输入输出文件路径，../表示为上一级目录
+data = pd.read_excel(inputfile_path, header=None)  # 读入数据，header=none表示EXCEL文件中第一列不是属性列，而是数据
+
+for i in data.columns:  # 按data列遍历
+    for j in range(len(data)):  # pandas中对DATAFRAME使用LEN返回的是行数，数据总个数应使用.size方法
+        if (data[i].isnull()[j]):  # 如果i列上j值为空
+            data[i][j] = ployinterp_column(data[i], j)[j]
+
+data.to_excel(outputfile_path, header=None, index=False)  # 输出结果，index为0表示输出时不输出行号
