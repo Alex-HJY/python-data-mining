@@ -18,7 +18,7 @@
   - code：代码
   - data：数据
   - output：输出结果
-  - pdf：电子文档
+- 参考电子书地址：http://www.ddooo.com/softdown/109026.htm
 
 ## 联系方式
 
