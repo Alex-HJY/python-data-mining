@@ -12,10 +12,9 @@ import time #导入时间库用来计算用时
 inputfile = '../data/apriori.txt' #输入事务集文件
 data = pd.read_csv(inputfile, header=None, dtype = object)
 #dtype设置为object防止读取出错
-
 start = time.clock() #计时开始
 print(u'\n转换原始数据至0-1矩阵...')
-ct = lambda x : pd.Series(1, index = x[pd.notnull(x)]) #转换0-1矩阵的过渡函数
+ct = lambda x : pd.Series(1, index = x) #将每行数据转换为SERIES
 b = list(map(ct, data.values)) #用map方式执行
 data = pd.DataFrame(b).fillna(0).sort_index(axis=1)
 #实现矩阵转换，空值用0填充,并对列标签排序
