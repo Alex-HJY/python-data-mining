@@ -29,7 +29,7 @@ def ployinterp_column(s, n, k=5):
 
 inputfile_path = '../data/missing_data.xls'
 outputfile_path = '../output/missing_data_processed.xls'  # 输入输出文件路径，../表示为上一级目录
-data = pd.read_excel(inputfile_path, header=None)  # 读入数据，header=none表示EXCEL文件中第一列不是属性列，而是数据
+data = pd.read_excel(inputfile_path, header=None)  # 读入数据，header=none表示EXCEL文件中第一列不是属性标签，而是数据
 
 for i in data.columns:  # 按data列遍历
     for j in range(len(data)):  # pandas中对DATAFRAME使用LEN返回的是行数，数据总个数应使用.size方法

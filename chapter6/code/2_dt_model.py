@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 构建并测试CART决策树模型
+By HJY
+2018-7-18
 """
 import pandas as pd
 from random import shuffle  # 导入随机函数shuffle，用来打散数据

@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+'''
+混淆矩阵作图函数
+By HJY
+2018-7-18
+'''
 import numpy as np
 def cm_plot(y, yp):
     '''
