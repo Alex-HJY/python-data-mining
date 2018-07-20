@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-
+构建SVM模型来分类数据
+BY HJY
+2018-7-20
 """
 import pandas as pd
 from numpy.random import shuffle  # 引入随机函数
