@@ -12,6 +12,10 @@
 
 需要的理论基础：Python基础、机器学习基础、少许matplotlib\numpy\pandas\scikit-learn\keras基础
 
+## 环境
+
+项目里的代码除了第十二章都经过检验，项目环境截至2018-7-23，使用PYTHON3.7+ANACONDA，各种库均为最新版本
+
 ## 内容
 
 - chapter06\~15：第六章\~第十五章
